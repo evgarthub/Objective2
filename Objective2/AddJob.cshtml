@@ -1,0 +1,63 @@
+﻿@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Add a new job";
+}
+
+@if (!IsPost)
+{
+    <section class="form-section">
+        <form class="form" action="" method="post" enctype="multipart/form-data">
+            <div class="form__field">
+                <label class="form__label" for="name">Title:</label>
+                <input class="form__input" required type="text" name="job_title">
+            </div>
+            <div class="form__field">
+                <label class="form__label" for="name">Avarage salary:</label>
+                <input class="form__input" required type="text" name="job_salary">
+            </div>
+            <div class="form__field">
+                <label class="form__label" for="name">English is required (yes, no):</label>
+                <select class="form__select" required name="job_english">
+                    <option class="form__option">Yes</option>
+                    <option class="form__option">No</option>
+                </select>
+            </div>
+            <div class="form__field">
+                <label class="form__label" for="name">Category:</label>
+                <input class="form__input" required type="text" name="job_category">
+            </div>
+            <div class="form__field">
+                <label class="form__label" for="name">Field:</label>
+                <input class="form__input" required type="text" name="job_field">
+            </div>
+            <div class="form__field">
+                <label class="form__label" for="name">Education:</label>
+                <input class="form__input" required type="text" name="job_education">
+            </div>
+            <div class="form__field">
+                <label class="form__label" for="msg">Keywords:</label>
+                <textarea class="form__textarea" name="job_keywords"></textarea>
+            </div>
+
+            <div class="form__submit">
+                <button class="form__button">Send my data</button>
+            </div>
+        </form>
+    </section>
+}
+else
+{
+    var jobTitle = Request["job_title"];
+    var jobCategory = Request["job_category"];
+    var jobEducation = Request["job_education"];
+    var jobEnglish = Request["job_english"];
+    var jobKeywords = Request["job_keywords"];
+    var jobSalary = Request["job_salary"];
+    var jobField = Request["job_field"];
+
+    <section class="form-section">
+        <span class="form-section__thanks-title">Your submittion has been recorded!</span>
+
+
+    </section>
+}

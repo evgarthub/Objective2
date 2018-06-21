@@ -1,0 +1,27 @@
+﻿<header class="header">
+    <a href="/" class="header__logo-link">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2000px-Google_%22G%22_Logo.svg.png" class="header__logo" />
+    </a>
+    <section class="header__login-panel login-panel" id="login">
+        @if (WebSecurity.IsAuthenticated)
+        {
+            <text>
+                Hello, <a class="email" href="~/Account/Manage" title="Manage">@WebSecurity.CurrentUserName</a>!
+                <form id="logoutForm" action="~/Account/Logout" method="post">
+                    @AntiForgery.GetHtml()
+                    <a href="javascript:document.getElementById('logoutForm').submit()">Log out</a>
+                </form>
+            </text>
+        }
+        else
+        {
+                <a class="login-panel__button" href="~/Account/Register">Register</a>
+                <a class="login-panel__button" href="~/Account/Login">Log in</a>
+        }
+    </section>
+    <nav class="header__nav nav">
+            <a class="nav__link" href="~/">Home</a>
+            <a class="nav__link" href="~/list">List</a>
+            <a class="nav__link" href="~/addjob">Add Job</a>
+    </nav>
+</header>
