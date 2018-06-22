@@ -1,35 +1,33 @@
 ﻿@{
     Layout = "~/_SiteLayout.cshtml";
-    Page.Title = "About";
+    Page.Title = "List";
 }
 
-<hgroup class="title">
-    <h1>@Page.Title.</h1>
-    <h2>Your app description page.</h2>
-</hgroup>
+@{
+    var db = Database.Open("StarterSite");
+    var insertCommand = "SELECT * FROM [Jobs]";
+    var selectedData = db.Query(insertCommand);
 
-<article>
-    <p>
-        Use this area to provide additional information.
-    </p>
+    var table = new WebGrid(source: selectedData, rowsPerPage: 10);
+}
 
-    <p>
-        Use this area to provide additional information.
-    </p>
 
-    <p>
-        Use this area to provide additional information.
-    </p>
-</article>
+<section class="result-table">
+    <div class="result-table__container">
+        <h1 class="result-table__title">All jobs</h1>
 
-<aside>
-    <h3>Aside Title</h3>
-    <p>
-        Use this area to provide additional information.
-    </p>
-    <ul>
-        <li><a href="~/">Home</a></li>
-        <li><a href="~/About">About</a></li>
-        <li><a href="~/Contact">Contact</a></li>
-    </ul>
-</aside>
+        @table.GetHtml(tableStyle: "result-table__grid grid",
+         headerStyle: "grid__head",
+         alternatingRowStyle: "alt",
+         columns: table.Columns(
+            table.Column(format: @<a href="~/EditJob?id=@item.ID">Edit</a>),
+            table.Column("Title"),
+            table.Column("SalaryAvarage"),
+            table.Column("English"),
+            table.Column("Category"),
+            table.Column("Field"),
+            table.Column("Education")
+            )
+        )
+    </div>
+</section>

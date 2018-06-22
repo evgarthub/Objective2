@@ -7,9 +7,45 @@
 
     &-section {
         display: flex;
+        flex-flow: column nowrap;
         justify-content: center;
         padding: 2em 1em;
         background-color: #bbdefb;
+
+        &__container {
+            max-width: 70em;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        &__table {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+
+        &__cell {
+            border: 2px solid var(--color-secondary-dark);
+            padding: .5em 1em;
+            transition: all .2s linear;
+
+            &:hover {
+                background-color: var(--color-secondary);
+                color: var(--color-primary-light);
+            }
+
+            &--header {
+                background-color: var(--color-secondary-dark);
+                color: var(--color-primary-light);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+        &__thanks-title {
+            margin-bottom: 1em;
+        }
     }
 
     &__field {
