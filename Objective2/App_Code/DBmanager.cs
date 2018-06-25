@@ -1,29 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
-using System.Web;
+using WebMatrix.Data;
 
 /// <summary>
 /// Summary description for DBmanager
 /// </summary>
 public class DBmanager
 {
-    public string JobTitle { get; set; }
-    public int JobSalary { get; set; }
-    public bool JobEnglish { get; set; }
-    public string JobCategory { get; set; }
-    public string JobField { get; set; }
-    public string JobEducation { get; set; }
+    public Database DB { get; set; }
 
-    public DBmanager(NameValueCollection form)
+    public DBmanager()
     {
-        this.JobTitle = form["job_title"];
-        this.JobSalary = Convert.ToInt32(form["job_salary"]);
-        this.JobEnglish = Convert.ToBoolean(form["job_english"]);
-        this.JobCategory = form["job_category"];
-        this.JobField = form["job_field"];
-        this.JobEducation = form["job_education"];
+        this.DB = Database.Open("StarterSite");
     }
 
+    public IEnumerable<Job> ReadData()
+    {
+        var command = "SELECT * FROM [Jobs]";
+        var data = DB.Query(command);
+
+        foreach (var item in data)
+        {
+            yield return new Job((IDictionary<string, object>)data);
+        }
+    }
+
+    public IEnumerable<Job> ReadData(string filter)
+    {
+        var command = "SELECT * FROM [Jobs] WHERE Title=@0 OR Category=@0 OR Field=@0 OR Education=@0";
+        var data = DB.Query(command, filter);
+
+        foreach (var item in data)
+        {
+            yield return new Job((IDictionary<string, object>)data);
+        }
+    }
+
+    public Job GetById(string id)
+    {
+        string command = "SELECT * FROM [Jobs] WHERE Id=@0";
+        var data = DB.QuerySingle(command, id);
+        return new Job((IDictionary<string, object>)data);
+    }
+
+    public void WriteData(Job job)
+    {
+        var command = "INSERT INTO [Jobs] ([Title],[SalaryAvarage],[English],[Category],[Field],[Keywords],[Education]) VALUES(@0, @1, @2, @3, @4, @5, @6)";
+        var data = DB.Query(command, job.JobTitle, job.JobSalary, job.JobEnglish, job.JobCategory, job.JobField, job.JobKeywords, job.JobEducation);
+    }
+
+    public void WriteData(Job job, string id)
+    {
+        var command = "INSERT INTO [Jobs] ([Title],[SalaryAvarage],[English],[Category],[Field],[Keywords],[Education]) VALUES(@0, @1, @2, @3, @4, @5, @6) WHERE id=@7";
+        var data = DB.Query(command, job.JobTitle, job.JobSalary, job.JobEnglish, job.JobCategory, job.JobField, job.JobKeywords, job.JobEducation, job.id);
+    }
 }

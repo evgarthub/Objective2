@@ -1010,3 +1010,13 @@ there.
   max-width: 70em;
   margin: 0 auto;
 }
+.result-table__button {
+  display: inline-block;
+  padding: .5rem 1rem;
+  margin: var(--space-small);
+  border-radius: .5em;
+  background-color: var(--color-secondary-dark);
+  font-size: .75em;
+  color: var(--color-primary-light);
+  text-decoration: none;
+}

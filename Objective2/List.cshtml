@@ -4,11 +4,9 @@
 }
 
 @{
-    var db = Database.Open("StarterSite");
-    var insertCommand = "SELECT * FROM [Jobs]";
-    var selectedData = db.Query(insertCommand);
+    var db = new DBmanager();
 
-    var table = new WebGrid(source: selectedData, rowsPerPage: 10);
+    var table = new WebGrid(source: db.ReadData(), rowsPerPage: 10);
 }
 
 
@@ -20,7 +18,7 @@
          headerStyle: "grid__head",
          alternatingRowStyle: "alt",
          columns: table.Columns(
-            table.Column(format: @<a href="~/EditJob?id=@item.ID">Edit</a>),
+            table.Column(format: @<a href="~/EditJob?id=@item.ID" class="result-table__button">Edit</a>),
             table.Column("Title"),
             table.Column("SalaryAvarage"),
             table.Column("English"),

@@ -52,18 +52,9 @@
         }
         else
         {
+            var db = new DBmanager(Request.Form);
 
-            var jobTitle = Request.Form["job_title"];
-            var jobCategory = Request.Form["job_category"];
-            var jobEducation = Request.Form["job_education"];
-            var jobEnglish = Request.Form["job_english"];
-            var jobKeywords = Request.Form["job_keywords"];
-            var jobSalary = Request.Form["job_salary"].AsInt();
-            var jobField = Request.Form["job_field"];
-
-            var db = Database.Open("StarterSite");
-            var insertCommand = "INSERT INTO [Jobs] ([Title],[SalaryAvarage],[English],[Category],[Field],[Keywords],[Education]) VALUES(@0, @1, @2, @3, @4, @5, @6)";
-            var recordedData = db.Query(insertCommand, jobTitle, jobSalary, jobEnglish, jobCategory, jobField, jobKeywords, jobEducation);
+            db.WriteData();
 
             <div class="form-section__result">
                 <h1 class="form-section__thanks-title">Your submittion has been recorded!</h1>
@@ -77,13 +68,13 @@
                     <div class="form-section__cell form-section__cell--header">Education</div>
                     <div class="form-section__cell form-section__cell--header">Keywords</div>
 
-                    <div class="form-section__cell">@jobTitle</div>
-                    <div class="form-section__cell">@jobEnglish</div>
-                    <div class="form-section__cell">@jobSalary</div>
-                    <div class="form-section__cell">@jobCategory</div>
-                    <div class="form-section__cell">@jobField</div>
-                    <div class="form-section__cell">@jobEducation</div>
-                    <div class="form-section__cell">@jobKeywords</div>
+                    <div class="form-section__cell">@db.JobTitle</div>
+                    <div class="form-section__cell">@db.JobEnglish</div>
+                    <div class="form-section__cell">@db.JobSalary</div>
+                    <div class="form-section__cell">@db.JobCategory</div>
+                    <div class="form-section__cell">@db.JobField</div>
+                    <div class="form-section__cell">@db.JobEducation</div>
+                    <div class="form-section__cell">@db.JobKeywords</div>
                 </div>
             </div>
 
