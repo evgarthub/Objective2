@@ -15,6 +15,7 @@ public class Job
     public string JobField { get; set; }
     public string JobEducation { get; set; }
     public string JobKeywords { get; set; }
+    public int JobId { get; set; }
 
     public Job(NameValueCollection form)
     {

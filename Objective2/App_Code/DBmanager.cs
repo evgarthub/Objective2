@@ -53,6 +53,6 @@ public class DBmanager
     public void WriteData(Job job, string id)
     {
         var command = "INSERT INTO [Jobs] ([Title],[SalaryAvarage],[English],[Category],[Field],[Keywords],[Education]) VALUES(@0, @1, @2, @3, @4, @5, @6) WHERE id=@7";
-        var data = DB.Query(command, job.JobTitle, job.JobSalary, job.JobEnglish, job.JobCategory, job.JobField, job.JobKeywords, job.JobEducation, job.id);
+        var data = DB.Query(command, job.JobTitle, job.JobSalary, job.JobEnglish, job.JobCategory, job.JobField, job.JobKeywords, job.JobEducation, job.JobId);
     }
 }

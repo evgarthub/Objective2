@@ -13,16 +13,16 @@
 
             var data = db.GetById(Request.QueryString["id"]);
 
-            <h1 class="form-section__title">Edit job: "@data.Title"</h1>
+            <h1 class="form-section__title">Edit job: "@data.JobTitle"</h1>
 
             <form class="form" action="" method="post" enctype="multipart/form-data">
                 <div class="form__field">
                     <label class="form__label" for="name">Title:</label>
-                    <input class="form__input" required type="text" name="job_title" value="@data.Title">
+                    <input class="form__input" required type="text" name="job_title" value="@data.JobTitle">
                 </div>
                 <div class="form__field">
                     <label class="form__label" for="name">Avarage salary:</label>
-                    <input class="form__input" required type="text" name="job_salary" value="@data.SalaryAvarage">
+                    <input class="form__input" required type="text" name="job_salary" value="@data.JobSalary">
                 </div>
                 <div class="form__field">
                     <label class="form__label" for="name">English is required:</label>
@@ -33,15 +33,15 @@
                 </div>
                 <div class="form__field">
                     <label class="form__label" for="name">Category:</label>
-                    <input class="form__input" required type="text" name="job_category" value="@data.Category">
+                    <input class="form__input" required type="text" name="job_category" value="@data.JobCategory">
                 </div>
                 <div class="form__field">
                     <label class="form__label" for="name">Field:</label>
-                    <input class="form__input" required type="text" name="job_field" value="@data.Field">
+                    <input class="form__input" required type="text" name="job_field" value="@data.JobField">
                 </div>
                 <div class="form__field">
                     <label class="form__label" for="name">Education:</label>
-                    <input class="form__input" required type="text" name="job_education" value="@data.Education">
+                    <input class="form__input" required type="text" name="job_education" value="@data.JobEducation">
                 </div>
                 <div class="form__field">
                     <label class="form__label" for="msg">Keywords:</label>
@@ -59,7 +59,7 @@
 
             var db = new DBmanager(Request.Form);
 
-            db.WriteData(Request.QueryString["id"]);
+            db.WriteData(db, Request.QueryString["id"]);
 
             <div class="form-section__result">
                 <h1 class="form-section__thanks-title">Your submittion has been recorded!</h1>
