@@ -18,13 +18,13 @@
          headerStyle: "grid__head",
          alternatingRowStyle: "alt",
          columns: table.Columns(
-            table.Column(format: @<a href="~/EditJob?id=@item.ID" class="result-table__button">Edit</a>),
-            table.Column("Title"),
-            table.Column("SalaryAvarage"),
-            table.Column("English"),
-            table.Column("Category"),
-            table.Column("Field"),
-            table.Column("Education")
+            table.Column(format: @<a href="~/EditJob?id=@item.JobId" class="result-table__button">Edit</a>),
+            table.Column("JobTitle"),
+            table.Column("JobSalary"),
+            table.Column("JobEnglish"),
+            table.Column("JobCategory"),
+            table.Column("JobField"),
+            table.Column("JobEducation")
             )
         )
     </div>

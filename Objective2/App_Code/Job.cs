@@ -28,14 +28,15 @@ public class Job
         this.JobKeywords = form["job_keywords"];
     }
 
-    public Job(IDictionary<string, object> form)
+    public Job(DynamicRecord form)
     {
-        this.JobTitle = (string)form["job_title"];
-        this.JobSalary = Convert.ToInt32(form["job_salary"]);
-        this.JobEnglish = Convert.ToBoolean(form["job_english"]);
-        this.JobCategory = (string)form["job_category"];
-        this.JobField = (string)form["job_field"];
-        this.JobEducation = (string)form["job_education"];
-        this.JobKeywords = (string)form["job_keywords"];
+        this.JobTitle = (string)form["Title"];
+        this.JobSalary = Convert.ToInt32(form["SalaryAvarage"]);
+        this.JobEnglish = Convert.ToBoolean(form["English"]);
+        this.JobCategory = (string)form["Category"];
+        this.JobField = (string)form["Field"];
+        this.JobEducation = (string)form["Education"];
+        this.JobKeywords = (string)form["Keywords"];
+        this.JobId = Convert.ToInt32(form["Id"]);
     }
 }

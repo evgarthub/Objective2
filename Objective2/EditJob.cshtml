@@ -57,9 +57,10 @@
         else
         {
 
-            var db = new DBmanager(Request.Form);
+            var db = new DBmanager();
+            var job = new Job(Request.Form);
 
-            db.WriteData(db, Request.QueryString["id"]);
+            db.UpdateData(job, Request.QueryString["id"]);
 
             <div class="form-section__result">
                 <h1 class="form-section__thanks-title">Your submittion has been recorded!</h1>
@@ -73,13 +74,13 @@
                     <div class="form-section__cell form-section__cell--header">Education</div>
                     <div class="form-section__cell form-section__cell--header">Keywords</div>
 
-                    <div class="form-section__cell">@db.JobTitle</div>
-                    <div class="form-section__cell">@db.JobEnglish</div>
-                    <div class="form-section__cell">@db.JobSalary</div>
-                    <div class="form-section__cell">@db.JobCategory</div>
-                    <div class="form-section__cell">@db.JobField</div>
-                    <div class="form-section__cell">@db.JobEducation</div>
-                    <div class="form-section__cell">@db.JobKeywords</div>
+                    <div class="form-section__cell">@job.JobTitle</div>
+                    <div class="form-section__cell">@job.JobEnglish</div>
+                    <div class="form-section__cell">@job.JobSalary</div>
+                    <div class="form-section__cell">@job.JobCategory</div>
+                    <div class="form-section__cell">@job.JobField</div>
+                    <div class="form-section__cell">@job.JobEducation</div>
+                    <div class="form-section__cell">@job.JobKeywords</div>
                 </div>
             </div>
 

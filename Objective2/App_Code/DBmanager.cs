@@ -22,7 +22,7 @@ public class DBmanager
 
         foreach (var item in data)
         {
-            yield return new Job((IDictionary<string, object>)data);
+            yield return new Job((DynamicRecord)item);
         }
     }
 
@@ -33,15 +33,15 @@ public class DBmanager
 
         foreach (var item in data)
         {
-            yield return new Job((IDictionary<string, object>)data);
+            yield return new Job((DynamicRecord)item);
         }
     }
 
     public Job GetById(string id)
     {
         string command = "SELECT * FROM [Jobs] WHERE Id=@0";
-        var data = DB.QuerySingle(command, id);
-        return new Job((IDictionary<string, object>)data);
+        var item = DB.QuerySingle(command, id);
+        return new Job(((DynamicRecord)item));
     }
 
     public void WriteData(Job job)
@@ -50,9 +50,9 @@ public class DBmanager
         var data = DB.Query(command, job.JobTitle, job.JobSalary, job.JobEnglish, job.JobCategory, job.JobField, job.JobKeywords, job.JobEducation);
     }
 
-    public void WriteData(Job job, string id)
+    public void UpdateData(Job job, string id)
     {
-        var command = "INSERT INTO [Jobs] ([Title],[SalaryAvarage],[English],[Category],[Field],[Keywords],[Education]) VALUES(@0, @1, @2, @3, @4, @5, @6) WHERE id=@7";
-        var data = DB.Query(command, job.JobTitle, job.JobSalary, job.JobEnglish, job.JobCategory, job.JobField, job.JobKeywords, job.JobEducation, job.JobId);
+        var command = "UPDATE [Jobs] SET [Title] = @0,[SalaryAvarage] = @1,[English] = @2,[Category] = @3,[Field] = @4,[Keywords] = @5,[Education] = @6 WHERE Id = @7";
+        var data = DB.Query(command, job.JobTitle, job.JobSalary, job.JobEnglish, job.JobCategory, job.JobField, job.JobKeywords, job.JobEducation, id);
     }
 }
