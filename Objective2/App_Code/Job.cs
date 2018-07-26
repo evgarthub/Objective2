@@ -13,6 +13,7 @@ public class Job
     public bool JobEnglish { get; set; }
     public string JobCategory { get; set; }
     public string JobField { get; set; }
+    public int JobFieldId { get; set; }
     public string JobEducation { get; set; }
     public string JobKeywords { get; set; }
     public int JobId { get; set; }
@@ -23,9 +24,10 @@ public class Job
         this.JobSalary = Convert.ToInt32(form["job_salary"]);
         this.JobEnglish = Convert.ToBoolean(form["job_english"]);
         this.JobCategory = form["job_category"];
-        this.JobField = form["job_field"];
+        this.JobFieldId = Convert.ToInt32(form["job_field"]);
         this.JobEducation = form["job_education"];
         this.JobKeywords = form["job_keywords"];
+        this.JobField = (string)form["job_field"];
     }
 
     public Job(DynamicRecord form)
@@ -34,9 +36,10 @@ public class Job
         this.JobSalary = Convert.ToInt32(form["SalaryAvarage"]);
         this.JobEnglish = Convert.ToBoolean(form["English"]);
         this.JobCategory = (string)form["Category"];
-        this.JobField = (string)form["Field"];
+        this.JobFieldId = Convert.ToInt32(form["FieldId"]);
         this.JobEducation = (string)form["Education"];
         this.JobKeywords = (string)form["Keywords"];
         this.JobId = Convert.ToInt32(form["Id"]);
+        this.JobField = (string)form["Field"];
     }
 }
