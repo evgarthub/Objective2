@@ -55,4 +55,10 @@ public class DBmanager
         var command = "UPDATE [Jobs] SET [Title] = @0,[SalaryAvarage] = @1,[English] = @2,[Category] = @3,[Field] = @4,[Keywords] = @5,[Education] = @6 WHERE Id = @7";
         var data = DB.Query(command, job.JobTitle, job.JobSalary, job.JobEnglish, job.JobCategory, job.JobField, job.JobKeywords, job.JobEducation, id);
     }
+
+    public void DeleteData(string id)
+    {
+        string command = "DELETE FROM [Jobs] WHERE Id=@0";
+        var item = DB.QuerySingle(command, id);
+    }
 }

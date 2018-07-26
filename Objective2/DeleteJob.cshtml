@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "List";
+}
+
+@{
+    var db = new DBmanager();
+    db.DeleteData(Request.QueryString["id"]);
+
+    Response.Redirect("~/list/");
+
+}
