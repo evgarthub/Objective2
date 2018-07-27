@@ -8,6 +8,10 @@
 
         @if (!IsPost)
         {
+            var job = new JobRepository();
+            job.FindAll();
+            var field = new FieldRepository();
+            field.List();
 
             <h1 class="form-section__title">Adding new job</h1>
 
@@ -31,10 +35,19 @@
                     <label class="form__label" for="name">Category:</label>
                     <input class="form__input" required type="text" name="job_category">
                 </div>
+
+
                 <div class="form__field">
                     <label class="form__label" for="name">Field:</label>
-                    <input class="form__input" required type="text" name="job_field">
+                    <select class="form__input" required name="job_field">
+                        <option class="form__input">Select field</option>
+                        @foreach () {
+                            <option class="form__option"></option>
+                        }
+                    </select>
                 </div>
+
+
                 <div class="form__field">
                     <label class="form__label" for="name">Education:</label>
                     <input class="form__input" required type="text" name="job_education">

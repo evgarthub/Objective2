@@ -6,17 +6,17 @@ using WebMatrix.Data;
 /// <summary>
 /// Summary description for DBmanager
 /// </summary>
-public class Job
+public class Job : IEntity
 {
     public string JobTitle { get; set; }
     public int JobSalary { get; set; }
     public bool JobEnglish { get; set; }
     public string JobCategory { get; set; }
-    public string JobField { get; set; }
+    public Field JobField { get; set; }
     public int JobFieldId { get; set; }
     public string JobEducation { get; set; }
     public string JobKeywords { get; set; }
-    public int JobId { get; set; }
+    public int Id { get; set; }
 
     public Job(NameValueCollection form)
     {
@@ -27,7 +27,7 @@ public class Job
         this.JobFieldId = Convert.ToInt32(form["job_field"]);
         this.JobEducation = form["job_education"];
         this.JobKeywords = form["job_keywords"];
-        this.JobField = (string)form["job_field"];
+        this.JobField = new Field(JobFieldId);
     }
 
     public Job(DynamicRecord form)
@@ -39,7 +39,7 @@ public class Job
         this.JobFieldId = Convert.ToInt32(form["FieldId"]);
         this.JobEducation = (string)form["Education"];
         this.JobKeywords = (string)form["Keywords"];
-        this.JobId = Convert.ToInt32(form["Id"]);
-        this.JobField = (string)form["Field"];
+        this.Id = Convert.ToInt32(form["Id"]);
+        this.JobField = new Field(JobFieldId);
     }
 }
