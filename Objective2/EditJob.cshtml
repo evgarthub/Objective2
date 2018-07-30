@@ -9,20 +9,28 @@
         @if (!IsPost)
         {
 
-            var db = new DBmanager();
+            var jobConnect = new JobRepository();
+            var data = jobConnect.FindById(Convert.ToInt32(Request.QueryString["id"]));
 
-            var data = db.GetById(Request.QueryString["id"]);
+            var fieldConnect = new FieldRepository();
+            var fields = fieldConnect.FindAll();
+            var currentField = fieldConnect.FindById(data.FieldId);
 
-            <h1 class="form-section__title">Edit job: "@data.JobTitle"</h1>
+            var categoryConnect = new CategoryRepository();
+            var categories = categoryConnect.FindAll();
+            var currentCategory = categoryConnect.FindById(data.CategoryId);
+
+
+            <h1 class="form-section__title">Edit job: "@data.Title"</h1>
 
             <form class="form" action="" method="post" enctype="multipart/form-data">
                 <div class="form__field">
                     <label class="form__label" for="name">Title:</label>
-                    <input class="form__input" required type="text" name="job_title" value="@data.JobTitle">
+                    <input class="form__input" required type="text" name="job_title" value="@data.Title">
                 </div>
                 <div class="form__field">
                     <label class="form__label" for="name">Avarage salary:</label>
-                    <input class="form__input" required type="text" name="job_salary" value="@data.JobSalary">
+                    <input class="form__input" required type="text" name="job_salary" value="@data.Salary">
                 </div>
                 <div class="form__field">
                     <label class="form__label" for="name">English is required:</label>
@@ -33,15 +41,37 @@
                 </div>
                 <div class="form__field">
                     <label class="form__label" for="name">Category:</label>
-                    <input class="form__input" required type="text" name="job_category" value="@data.JobCategory">
+                    <select class="form__input" required name="job_category">
+                        <option class="form__input" value="@currentCategory.Id">@currentCategory.Title</option>
+
+                        @foreach (Category item in categories)
+                        {
+                            if (item.Id != currentCategory.Id)
+                            {
+                                <option class="form__option" value="@item.Id">@item.Title</option>
+                            }
+                        }
+
+                    </select>
                 </div>
                 <div class="form__field">
                     <label class="form__label" for="name">Field:</label>
-                    <input class="form__input" required type="text" name="job_field" value="@data.JobField">
+                    <select class="form__input" required name="job_field">
+                        <option class="form__input" value="@currentField.Id">@currentField.Title</option>
+
+                        @foreach (Field item in fields)
+                        {
+                            if (item.Id != currentField.Id)
+                            {
+                                <option class="form__option" value="@item.Id">@item.Title</option>
+                            }
+                        }
+
+                    </select>
                 </div>
                 <div class="form__field">
                     <label class="form__label" for="name">Education:</label>
-                    <input class="form__input" required type="text" name="job_education" value="@data.JobEducation">
+                    <input class="form__input" required type="text" name="job_education" value="@data.Education">
                 </div>
                 <div class="form__field">
                     <label class="form__label" for="msg">Keywords:</label>
@@ -57,10 +87,10 @@
         else
         {
 
-            var db = new DBmanager();
+            var db = new JobRepository();
             var job = new Job(Request.Form);
 
-            db.UpdateData(job, Request.QueryString["id"]);
+            db.Update(job);
 
             <div class="form-section__result">
                 <h1 class="form-section__thanks-title">Your submittion has been recorded!</h1>
@@ -74,13 +104,13 @@
                     <div class="form-section__cell form-section__cell--header">Education</div>
                     <div class="form-section__cell form-section__cell--header">Keywords</div>
 
-                    <div class="form-section__cell">@job.JobTitle</div>
-                    <div class="form-section__cell">@job.JobEnglish</div>
-                    <div class="form-section__cell">@job.JobSalary</div>
-                    <div class="form-section__cell">@job.JobCategory</div>
-                    <div class="form-section__cell">@job.JobField</div>
-                    <div class="form-section__cell">@job.JobEducation</div>
-                    <div class="form-section__cell">@job.JobKeywords</div>
+                    <div class="form-section__cell">@job.Title</div>
+                    <div class="form-section__cell">@job.English</div>
+                    <div class="form-section__cell">@job.Salary</div>
+                    <div class="form-section__cell">@job.CategoryId</div>
+                    <div class="form-section__cell">@job.FieldId</div>
+                    <div class="form-section__cell">@job.Education</div>
+                    <div class="form-section__cell">@job.Keywords</div>
                 </div>
             </div>
 

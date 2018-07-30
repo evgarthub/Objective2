@@ -4,9 +4,9 @@
 }
 
 @{
-    var db = new DBmanager();
+    var jobConnect = new JobRepository();
 
-    var table = new WebGrid(source: db.ReadData(), rowsPerPage: 10);
+    var table = new WebGrid(source: jobConnect.FindAllFormated(), rowsPerPage: 10);
 }
 
 
@@ -19,12 +19,12 @@
          alternatingRowStyle: "alt",
          columns: table.Columns(
             table.Column(format: @<a title="Open edit page" href="~/EditJob?id=@item.Id" class="result-table__button result-table__button--close">Edit</a>),
-            table.Column("JobTitle"),
-            table.Column("JobSalary"),
-            table.Column("JobEnglish"),
-            table.Column("JobCategory"),
-            table.Column("JobField"),
-            table.Column("JobEducation"),
+            table.Column("Title"),
+            table.Column("Salary"),
+            table.Column("English"),
+            table.Column("CategoryTitle"),
+            table.Column("FieldTitle"),
+            table.Column("Education"),
             table.Column(format: @<a title="Remove Job" href="~/DeleteJob?id=@item.Id" class="result-table__button result-table__button--delete">X</a>)
             )
         )

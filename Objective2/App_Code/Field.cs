@@ -14,6 +14,7 @@ public class Field : IEntity
 
     public Field(DynamicRecord form)
     {
-
+        this.Id = Convert.ToInt32(form["Id"]);
+        this.Title = (string)form["Title"];
     }
 }

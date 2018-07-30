@@ -4,8 +4,8 @@
 }
 
 @{
-    var db = new DBmanager();
-    db.DeleteData(Request.QueryString["id"]);
+    var db = new JobRepository();
+    db.Delete(Request.QueryString["id"]);
 
     Response.Redirect("~/list/");
 

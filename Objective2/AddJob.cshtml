@@ -8,10 +8,14 @@
 
         @if (!IsPost)
         {
-            var job = new JobRepository();
-            job.FindAll();
-            var field = new FieldRepository();
-            field.List();
+            var jobConnect = new JobRepository();
+            jobConnect.FindAll();
+
+            var fieldConnect = new FieldRepository();
+            var fields = fieldConnect.FindAll();
+
+            var categoryConnect = new CategoryRepository();
+            var categories = categoryConnect.FindAll();
 
             <h1 class="form-section__title">Adding new job</h1>
 
@@ -33,7 +37,15 @@
                 </div>
                 <div class="form__field">
                     <label class="form__label" for="name">Category:</label>
-                    <input class="form__input" required type="text" name="job_category">
+                    <select class="form__input" required name="job_category">
+                        <option class="form__input">Choose category</option>
+
+                        @foreach (Category item in categories)
+                        {
+                            <option class="form__option" value="@item.Id">@item.Title</option>
+                        }
+
+                    </select>
                 </div>
 
 
@@ -41,9 +53,12 @@
                     <label class="form__label" for="name">Field:</label>
                     <select class="form__input" required name="job_field">
                         <option class="form__input">Select field</option>
-                        @foreach () {
-                            <option class="form__option"></option>
+
+                        @foreach (Field item in fields)
+                        {
+                            <option class="form__option" value="@item.Id">@item.Title</option>
                         }
+
                     </select>
                 </div>
 
@@ -65,9 +80,9 @@
         }
         else
         {
-            var db = new DBmanager();
+            var db = new JobRepository();
             var job = new Job(Request.Form);
-            db.WriteData(job);
+            db.Add(job);
 
             <div class="form-section__result">
                 <h1 class="form-section__thanks-title">Your submittion has been recorded!</h1>
@@ -81,13 +96,13 @@
                     <div class="form-section__cell form-section__cell--header">Education</div>
                     <div class="form-section__cell form-section__cell--header">Keywords</div>
 
-                    <div class="form-section__cell">@job.JobTitle</div>
-                    <div class="form-section__cell">@job.JobEnglish</div>
-                    <div class="form-section__cell">@job.JobSalary</div>
-                    <div class="form-section__cell">@job.JobCategory</div>
-                    <div class="form-section__cell">@job.JobField</div>
-                    <div class="form-section__cell">@job.JobEducation</div>
-                    <div class="form-section__cell">@job.JobKeywords</div>
+                    <div class="form-section__cell">@job.Title</div>
+                    <div class="form-section__cell">@job.English</div>
+                    <div class="form-section__cell">@job.Salary</div>
+                    <div class="form-section__cell">@job.CategoryId</div>
+                    <div class="form-section__cell">@job.FieldId</div>
+                    <div class="form-section__cell">@job.Education</div>
+                    <div class="form-section__cell">@job.Keywords</div>
                 </div>
             </div>
 
