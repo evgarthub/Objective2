@@ -26,11 +26,21 @@
             <form class="form" action="" method="post" enctype="multipart/form-data">
                 <div class="form__field">
                     <label class="form__label" for="name">Title:</label>
-                    <input class="form__input" required type="text" name="job_title" value="@data.Title">
+                    <input class="form__input" 
+                           required 
+                           type="text" 
+                           name="job_title" 
+                           value="@data.Title"
+                           pattern="[A-Za-z ]*">
                 </div>
                 <div class="form__field">
                     <label class="form__label" for="name">Avarage salary:</label>
-                    <input class="form__input" required type="text" name="job_salary" value="@data.Salary">
+                    <input class="form__input" 
+                           required 
+                           type="text" 
+                           name="job_salary" 
+                           value="@data.Salary"
+                           pattern="[1-9][0-9]*">
                 </div>
                 <div class="form__field">
                     <label class="form__label" for="name">English is required:</label>
@@ -71,15 +81,25 @@
                 </div>
                 <div class="form__field">
                     <label class="form__label" for="name">Education:</label>
-                    <input class="form__input" required type="text" name="job_education" value="@data.Education">
+                    <input class="form__input" 
+                           required 
+                           type="text" 
+                           name="job_education" 
+                           value="@data.Education"
+                           pattern="[A-Za-z ]*">
                 </div>
                 <div class="form__field">
                     <label class="form__label" for="msg">Keywords:</label>
-                    <textarea class="form__textarea" name="job_keywords"></textarea>
+                    <textarea 
+                              class="form__textarea" 
+                              name="job_keywords"></textarea>
                 </div>
 
                 <div class="form__submit">
                     <button class="form__button">Save changes</button>
+                </div>
+                <div class="form__submit">
+                    <a href="@Request.UrlReferrer" class="form__button">Get back</a>
                 </div>
             </form>
 
@@ -87,10 +107,10 @@
         else
         {
 
-            var db = new JobRepository();
-            var job = new Job(Request.Form);
+            var jobConnect = new JobRepository();
+            var job = new Job(Request.Form, Request.QueryString["id"]);
 
-            db.Update(job);
+            jobConnect.Update(job);
 
             <div class="form-section__result">
                 <h1 class="form-section__thanks-title">Your submittion has been recorded!</h1>
@@ -114,7 +134,8 @@
                 </div>
             </div>
 
-
+                <a href="~/list/" class="form__button">Show all</a>
+           
         }
     </div>
 </section>

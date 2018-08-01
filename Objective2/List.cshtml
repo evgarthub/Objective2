@@ -18,14 +18,14 @@
          headerStyle: "grid__head",
          alternatingRowStyle: "alt",
          columns: table.Columns(
-            table.Column(format: @<a title="Open edit page" href="~/EditJob?id=@item.Id" class="result-table__button result-table__button--close">Edit</a>),
+            table.Column(format: @<a title="Open edit page" href="~/EditJob?id=@item.Id" class="result-table__button">Edit</a>),
             table.Column("Title"),
             table.Column("Salary"),
             table.Column("English"),
             table.Column("CategoryTitle"),
             table.Column("FieldTitle"),
             table.Column("Education"),
-            table.Column(format: @<a title="Remove Job" href="~/DeleteJob?id=@item.Id" class="result-table__button result-table__button--delete">X</a>)
+            table.Column(format: @<a title="Remove Job" href="~/DeleteJob?id=@item.Id" class="result-table__button result-table__button--circle result-table__button--delete">X</a>)
             )
         )
     </div>

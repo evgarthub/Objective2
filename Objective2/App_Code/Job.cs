@@ -28,6 +28,18 @@ public class Job : IEntity
         this.FieldId = Convert.ToInt32(form["job_field"]);
     }
 
+    public Job(NameValueCollection form, string id)
+    {
+        this.Title = form["job_title"];
+        this.Salary = Convert.ToInt32(form["job_salary"]);
+        this.English = Convert.ToBoolean(form["job_english"]);
+        this.CategoryId = Convert.ToInt32(form["job_category"]);
+        this.Education = form["job_education"];
+        this.Keywords = form["job_keywords"];
+        this.FieldId = Convert.ToInt32(form["job_field"]);
+        this.Id = Convert.ToInt32(id);
+    }
+
     public Job(DynamicRecord dbdata)
     {
         this.Title = (string)dbdata["Title"];

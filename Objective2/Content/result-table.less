@@ -6,6 +6,8 @@
         grid-template-columns: auto;
         max-width: 70em;
         margin: 0 auto;
+        max-width: 100%;
+        overflow-x: auto;
     }
 
     &__button {
@@ -17,5 +19,25 @@
         font-size: .75em;
         color: var(--color-primary-light);
         text-decoration: none;
+        border: solid 3px var(--color-secondary-dark);
+        transition: all ease .3s;
+
+        &:hover {
+            background-color: white;
+            color: var(--color-secondary-dark);
+        }
+
+        &--circle {
+            border-radius: 50%;
+            border: none;
+            box-shadow: darkred 0 0 0;
+
+
+            &:hover {
+                background-color: darkred;
+                color: white;
+                box-shadow: darkred 0 0 5px;
+            }
+        }
     }
 }

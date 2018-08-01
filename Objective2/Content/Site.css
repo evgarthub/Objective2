@@ -936,9 +936,31 @@ there.
   border-radius: .2em;
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
+.form__button {
+  display: inline-block;
+  padding: .5rem 1rem;
+  margin: var(--space-small);
+  border-radius: .5em;
+  background-color: var(--color-secondary-dark);
+  font-size: 1em;
+  line-height: 1;
+  color: var(--color-primary-light);
+  text-decoration: none;
+  border: solid 3px var(--color-secondary-dark);
+  transition: all ease .3s;
+}
+.form__button:hover {
+  background-color: transparent;
+  color: var(--color-secondary-dark);
+}
+html,
+body {
+  width: 100%;
+}
 .main-container {
   display: grid;
   grid-template-rows: auto 1fr auto;
+  width: 100%;
 }
 :root {
   --color-primary: #bbdefb;
@@ -1009,6 +1031,8 @@ there.
   grid-template-columns: auto;
   max-width: 70em;
   margin: 0 auto;
+  max-width: 100%;
+  overflow-x: auto;
 }
 .result-table__button {
   display: inline-block;
@@ -1019,4 +1043,20 @@ there.
   font-size: .75em;
   color: var(--color-primary-light);
   text-decoration: none;
+  border: solid 3px var(--color-secondary-dark);
+  transition: all ease .3s;
+}
+.result-table__button:hover {
+  background-color: white;
+  color: var(--color-secondary-dark);
+}
+.result-table__button--circle {
+  border-radius: 50%;
+  border: none;
+  box-shadow: darkred 0 0 0;
+}
+.result-table__button--circle:hover {
+  background-color: darkred;
+  color: white;
+  box-shadow: darkred 0 0 5px;
 }

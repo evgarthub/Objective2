@@ -22,11 +22,19 @@
             <form class="form" action="" method="post" enctype="multipart/form-data">
                 <div class="form__field">
                     <label class="form__label" for="name">Title:</label>
-                    <input class="form__input" required type="text" name="job_title">
+                    <input class="form__input" 
+                           required 
+                           type="text" 
+                           name="job_title"
+                           pattern="[A-Za-z ]*">
                 </div>
                 <div class="form__field">
                     <label class="form__label" for="name">Avarage salary:</label>
-                    <input class="form__input" required type="text" name="job_salary">
+                    <input class="form__input" 
+                           required 
+                           type="text" 
+                           name="job_salary"
+                           pattern="[1-9][0-9]*">
                 </div>
                 <div class="form__field">
                     <label class="form__label" for="name">English is required:</label>
@@ -65,7 +73,11 @@
 
                 <div class="form__field">
                     <label class="form__label" for="name">Education:</label>
-                    <input class="form__input" required type="text" name="job_education">
+                    <input class="form__input" 
+                           required 
+                           type="text" 
+                           name="job_education" 
+                           pattern="[A-Za-z ]*">
                 </div>
                 <div class="form__field">
                     <label class="form__label" for="msg">Keywords:</label>
@@ -104,6 +116,9 @@
                     <div class="form-section__cell">@job.Education</div>
                     <div class="form-section__cell">@job.Keywords</div>
                 </div>
+
+                <a href="@Request.UrlReferrer" class="form__button">Add more</a>
+                <a href="~/list/" class="form__button">Show all</a>
             </div>
 
         }
