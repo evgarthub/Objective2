@@ -5,7 +5,7 @@ namespace DataLayer
 
     public interface IRepository<T> where T : IEntity
     {
-        IEnumerable<T> GetAll();
+        IList<T> GetAll();
         T GetById(int id);
         void Create(T entity);
         void Delete(T entity);

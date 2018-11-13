@@ -7,7 +7,7 @@ namespace HomeIO.Models.Entities
     {
         public int Id { get; set; }
         public int TypeId { get; set; }
-        public int CurrentValue { get; set; }
+        public double CurrentValue { get; set; }
         public DateTime Date { get; set; }
     }
 }

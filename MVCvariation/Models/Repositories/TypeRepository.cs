@@ -5,41 +5,101 @@ using System.Data.SqlClient;
 
 namespace HomeIO.Models.Repositories
 {
-    public class TypeRepository : SQLConnection, IRepository<Type>
+    public class TypeRepository : SQLConnection, IRepository<RType>
     {
-        public void Create(Type entity)
+        public void Create(RType entity)
         {
-            Open();
-            SqlCommand command = new SqlCommand();
+            using (SqlCommand command = CreateCommand("INSERT INTO[Types]([Name],[Formula]) VALUES(@typeName, @typeFormula)"))
+            {
+                command.Parameters.AddWithValue("typeName", entity.Name);
+                command.Parameters.AddWithValue("typeFormula", entity.Formula);
+                command.ExecuteNonQuery();
 
-            command.Connection = DBInstance;
-            command.CommandText = "INSERT INTO[Jobs]([Title],[SalaryAvarage],[English],[CategoryId],[FieldId],[Keywords],[Education]) VALUES(@0, @1, @2, @3, @4, @5, @6)";
-            command.ExecuteNonQuery();
+                Close();
+            }
+
         }
 
-        public void Delete(Type entity)
+        public void Delete(RType entity)
         {
-            throw new NotImplementedException();
+            using (SqlCommand command = CreateCommand("DELETE FROM [Types] WHERE Id = @typeId"))
+            {
+                command.Parameters.AddWithValue("typeId", entity.Id);
+                command.ExecuteNonQuery();
+
+                Close();
+            }
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            using (SqlCommand command = CreateCommand("DELETE FROM [Types] WHERE Id = @typeId"))
+            {
+                command.Parameters.AddWithValue("typeId", id);
+                command.ExecuteNonQuery();
+
+                Close();
+            }
         }
 
-        public IEnumerable<Type> GetAll()
+        public IList<RType> GetAll()
         {
-            throw new NotImplementedException();
+            using (SqlCommand command = CreateCommand("SELECT * FROM [Types]"))
+            {
+                SqlDataReader reader = command.ExecuteReader();
+
+                IList<RType> rows = new List<RType>();
+
+                while (reader.Read())
+                {
+                    rows.Add(new RType
+                    {
+                        Id = reader.GetInt32(0),
+                        Name = reader.GetString(1),
+                        Formula = reader.GetString(2)
+                    });
+                }
+
+                Close();
+
+                return rows;
+            };
         }
 
-        public Type GetById(int id)
+        public RType GetById(int id)
         {
-            throw new NotImplementedException();
+            using (SqlCommand command = CreateCommand("SELECT * FROM [Types] WHERE Id = @typeId")) {
+                command.Parameters.AddWithValue("typeId", id);
+                SqlDataReader reader = command.ExecuteReader();
+
+                IList<RType> rows = new List<RType>();
+
+                while (reader.Read())
+                {
+                    rows.Add(new RType
+                    {
+                        Id = reader.GetInt32(0),
+                        Name = reader.GetString(1),
+                        Formula = reader.GetString(2)
+                    });
+                }
+
+                Close();
+
+                return rows[0];
+            }
         }
 
-        public void Update(Type entity)
+        public void Update(RType entity)
         {
-            throw new NotImplementedException();
+            using (SqlCommand command = CreateCommand("UPDATE [Types] SET [Name] = @typeName, [Formula] = @typeFormula WHERE Id = @typeId")) {
+                command.Parameters.AddWithValue("typeId", entity.Id);
+                command.Parameters.AddWithValue("typeName", entity.Name);
+                command.Parameters.AddWithValue("typeFormula", entity.Formula);
+                command.ExecuteNonQuery();
+
+                Close();
+            }
         }
     }
 }

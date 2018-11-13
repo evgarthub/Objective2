@@ -1,0 +1,27 @@
+﻿@model List<RecordView>
+
+<section class="table">
+    <div class="table__container">
+        <div class="table__row table__row--header">
+            <div class="table__cell">Type</div>
+            <div class="table__cell">Current Value</div>
+            <div class="table__cell">Date</div>
+            <div href="" class="table__cell">Operations</div>
+        </div>
+
+        @foreach (var row in Model)
+        {
+            <div class="table__row">
+                <div class="table__cell">@row.TypeName</div>
+                <div class="table__cell">@row.CurrentValue</div>
+                <div class="table__cell">@Convert.ToDateTime(row.Date).ToString("MM/dd/yyyy")</div>
+                <div class="table__cell">
+                    <a href="/record/edit/@row.Id" class="button">Edit</a> 
+                    <a href="/record/delete/@row.Id" class="button button--delete">Delete</a>
+                </div>
+                
+                
+            </div>
+        }
+    </div>
+</section>

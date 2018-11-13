@@ -1,0 +1,17 @@
+﻿///<reference path="../main.less" />
+
+.summary-grid {
+    &__container {
+        .base-container();
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(14.5rem, 1fr));
+        grid-gap: 1em;
+    }
+
+    &__block {
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 2px 8px 0 grey;
+        padding: 1em;
+    }
+}

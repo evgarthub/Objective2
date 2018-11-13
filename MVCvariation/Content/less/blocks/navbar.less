@@ -1,0 +1,23 @@
+﻿///<reference path="../main.less" />
+
+.navbar {
+    background-color: @color-primary--light;
+
+    &__container {
+        .base-container();
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    &__list {
+        &-wrapper {
+            flex: 1 1 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        &-item {
+            padding: .5em;
+        }
+    }
+}

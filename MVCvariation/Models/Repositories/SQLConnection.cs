@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 
 namespace HomeIO.Models.Repositories
 {
@@ -7,29 +6,32 @@ namespace HomeIO.Models.Repositories
     {
         public SqlConnection DBInstance { get; set; }
 
-        public SQLConnection() {
-            this.DBInstance = new SqlConnection(
-            "user id=dbuser;" +
+        public SQLConnection()
+        {
+            DBInstance = new SqlConnection(
+            "user=dbuser;" +
             "password=admin;" +
-            "server=UADEVYKIFIAK\SQLEXPRESS;" +
-            "Trusted_Connection=yes;" +
-            "database=homeio;" +
-            "connection timeout=30");
+            @"server=UADEVYKIFIAK\SQLEXPRESS;" +
+            "database=homeio;");
         }
 
-        public void Open() {
-            try
-            {
-                DBInstance.Open();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
+        public void Open()
+        {
+            DBInstance.Open();
         }
 
-        public void Close() {
+        public void Close()
+        {
             DBInstance.Close();
+        }
+
+        public SqlCommand CreateCommand(string commandText)
+        {
+            Open();
+            SqlCommand command = new SqlCommand();
+            command.Connection = DBInstance;
+            command.CommandText = commandText;
+            return command;
         }
     }
 }

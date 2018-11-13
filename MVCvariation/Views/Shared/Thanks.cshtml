@@ -1,0 +1,11 @@
+﻿@model Record
+
+
+<section class="thanks-table">
+    <div class="thanks-table__input">@Model.TypeId</div>
+    <div class="thanks-table__input">@Model.CurrentValue</div>
+    <div class="thanks-table__input">@Convert.ToDateTime(Model.Date).ToString("MM/dd/yyyy")</div>
+</section>
+
+<a href="/record/list/" class="thanks-table__link">Back to list</a>
+

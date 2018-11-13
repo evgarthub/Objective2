@@ -1,0 +1,24 @@
+﻿@model List<RType>
+
+
+<form class="form" method="post">
+    <div class="form__field">
+        <select class="form__input" required name="TypeId">
+            <option class="form__option" >Please choose type</option>
+            @foreach (var item in Model)
+            {
+                <option class="form__option" value="@item.Id">@item.Name</option>
+            }
+
+        </select>
+    </div>
+    <div class="form__field">
+        <input class="form__input" type="number" step="any" name="CurrentValue" placeholder="value" />
+    </div>
+    <div class="form__field">
+        <input class="form__input" type="date" name="Date" placeholder="date" />
+    </div>
+    <div class="form__field">
+        <input class="form__input button" type="submit" />
+    </div>
+</form>
