@@ -386,9 +386,14 @@ template {
   padding: 1em;
   max-width: 90%;
   width: 100%;
+}
+.summary-grid__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14.5rem, 1fr));
   grid-gap: 1em;
+}
+.summary-grid__header {
+  margin-bottom: 1em;
 }
 .summary-grid__block {
   background-color: white;

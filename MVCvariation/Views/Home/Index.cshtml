@@ -1,24 +1,28 @@
 ﻿@model SummaryPageViewModel
 
 
+
 <section class="summary-grid">
     <div class="summary-grid__container">
+        <h1 class="summary-grid__header">Summary for @DateTime.Now.ToLongDateString()</h1>
 
-        @foreach (var record in Model.SumRecords)
-        {
+        <div class="summary-grid__grid">
+            @foreach (var record in Model.SumRecords)
+            {
+                <div class="summary-grid__block">
+                    <h3 class="summary-grid__title">@record.TypeName</h3>
+                    <div class="summary-grid__value">Amount: @record.Amount @record.Unit</div>
+                    <div class="summary-grid__cost">Cost: @record.Cost uah</div>
+                    <div class="summary-grid__days">@record.Days.TotalDays days</div>
+                </div>
+            }
+
             <div class="summary-grid__block">
-                <h3 class="summary-grid__title">@record.TypeName</h3>
-                <div class="summary-grid__value">Amount: @record.Amount @record.Unit</div>
-                <div class="summary-grid__cost">Cost: @record.Cost uah</div>
-                <div class="summary-grid__days">@record.Days.TotalDays days</div>
+                <h3 class="summary-grid__title">Total cost</h3>
+                <div class="summary-grid__cost">@Model.TotalCost uah</div>
             </div>
-        }
 
-        <div class="summary-grid__block">
-            <h3 class="summary-grid__title">Total cost</h3>
-            <div class="summary-grid__cost">@Model.TotalCost uah</div>
         </div>
-
 
     </div>
 </section>

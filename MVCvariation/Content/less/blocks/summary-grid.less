@@ -3,9 +3,16 @@
 .summary-grid {
     &__container {
         .base-container();
+    }
+
+    &__grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(14.5rem, 1fr));
         grid-gap: 1em;
+    }
+
+    &__header {
+        margin-bottom: 1em;
     }
 
     &__block {
