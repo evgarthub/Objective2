@@ -45,6 +45,8 @@ namespace HomeIO.Models.Views
                     this.Cost = this.Tariff[0] * this.Amount;
                     break;
             }
+
+            this.Cost = Math.Round(this.Cost, 2);
         }
     }
 }

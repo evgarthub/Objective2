@@ -396,3 +396,6 @@ template {
   box-shadow: 0 2px 8px 0 grey;
   padding: 1em;
 }
+.summary-grid__days {
+  margin-top: 0.5em;
+}
