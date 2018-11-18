@@ -304,7 +304,7 @@ template {
   padding: 0.2em 0.4em;
 }
 .navbar {
-  background-color: #ffa4a2;
+  background-color: #4f9a94;
 }
 .navbar__container {
   margin: 0 auto;
@@ -322,28 +322,34 @@ template {
 .navbar__list-item {
   padding: 0.5em;
 }
+.navbar__logo-wrapper {
+  color: white;
+}
+.navbar__logo-wrapper * {
+  color: white;
+}
 .button {
-  background-color: #e57373;
+  background-color: #80cbc4;
   border: none;
   border-radius: 6px;
   text-decoration: none;
   padding: 0.2em 0.5em;
   text-align: center;
   color: white;
-  box-shadow: 0 2px 6px 0px #af4448;
+  box-shadow: 0 2px 6px 0px #4f9a94;
   transition: all ease-out 0.3s;
 }
 .button:hover {
   text-decoration: inherit;
   color: white;
-  box-shadow: 0 4px 8px 0px #af4448;
+  box-shadow: 0 4px 8px 0px #4f9a94;
 }
 .button--delete {
-  background-color: #80cbc4;
-  box-shadow: 0 2px 6px 0px #4f9a94;
+  background-color: #e57373;
+  box-shadow: 0 2px 6px 0px #af4448;
 }
 .button--delete:hover {
-  box-shadow: 0 4px 8px 0px #4f9a94;
+  box-shadow: 0 4px 8px 0px #af4448;
 }
 .table {
   display: flex;
@@ -381,6 +387,9 @@ template {
   width: 100px;
   margin: 0.5em;
 }
+.summary-grid {
+  background-color: #fff;
+}
 .summary-grid__container {
   margin: 0 auto;
   padding: 1em;
@@ -400,7 +409,18 @@ template {
   border-radius: 5px;
   box-shadow: 0 2px 8px 0 grey;
   padding: 1em;
+  transition: all ease-out 0.3s;
+}
+.summary-grid__block:hover {
+  box-shadow: 0 2px 16px 0 grey;
 }
 .summary-grid__days {
   margin-top: 0.5em;
+}
+.summary-grid__value {
+  font-size: 1.5em;
+}
+.summary-grid__title {
+  border-bottom: 1px solid darkgrey;
+  padding-bottom: 0.5em;
 }

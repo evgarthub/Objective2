@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
 
 namespace HomeIO.Models.Repositories
 {
@@ -11,7 +12,9 @@ namespace HomeIO.Models.Repositories
             DBInstance = new SqlConnection(
             "user=dbuser;" +
             "password=admin;" +
-            @"server=UADEVYKIFIAK\SQLEXPRESS;" +
+            "server=" +
+			Environment.MachineName +
+			@"\SQLEXPRESS;" +
             "database=homeio;");
         }
 

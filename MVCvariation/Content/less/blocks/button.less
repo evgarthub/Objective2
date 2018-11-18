@@ -1,28 +1,28 @@
 ﻿///<reference path="../main.less" />
 
 .button {
-    background-color: @color-primary;
+    background-color: @color-secondary;
     border: none;
     border-radius: 6px;
     text-decoration: none;
     padding: .2em .5em;
     text-align: center;
     color: white;
-    box-shadow: 0 2px 6px 0px @color-primary--dark;
+    box-shadow: 0 2px 6px 0px @color-secondary--dark;
     transition: all ease-out .3s;
 
     &:hover {
         text-decoration: inherit;
         color: white;
-        box-shadow: 0 4px 8px 0px @color-primary--dark;
+        box-shadow: 0 4px 8px 0px @color-secondary--dark;
     }
 
     &--delete {
-        background-color: @color-secondary;
-        box-shadow: 0 2px 6px 0px @color-secondary--dark;
+        background-color: @color-primary;
+        box-shadow: 0 2px 6px 0px @color-primary--dark;
 
         &:hover {
-            box-shadow: 0 4px 8px 0px @color-secondary--dark;
+            box-shadow: 0 4px 8px 0px @color-primary--dark;
         }
     }
 }
