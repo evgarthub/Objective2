@@ -21,12 +21,19 @@ namespace HomeIO.Models.Views
         public SumRecordView(IList<RecordView> records)
         {
             this.Record = records[0];
-            this.PrevRecord = records[1];
+            this.Days = DateTime.Now - Record.Date;
+            this.Amount = Record.CurrentValue;
+
+            if (records.Count > 1) {
+                this.PrevRecord = records[1];
+                this.Days = Record.Date - PrevRecord.Date;
+                this.Amount = Record.CurrentValue - PrevRecord.CurrentValue;
+            }
+            
             this.TypeName = Record.TypeName;
             this.Tariff = Record.Tariff.Split(',').Select(Double.Parse).ToArray();
-            this.Amount = Record.CurrentValue - PrevRecord.CurrentValue;
+            
             this.Unit = Record.Unit;
-            this.Days = Record.Date - PrevRecord.Date;
 
             switch (TypeName.ToLower()) {
                 case "electricity":
