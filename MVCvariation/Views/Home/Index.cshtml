@@ -11,8 +11,8 @@
             {
                 <div class="summary-grid__block">
                     <h3 class="summary-grid__title">@record.TypeName</h3>
-                    <div class="summary-grid__value">Amount: @record.Amount @record.Unit</div>
-                    <div class="summary-grid__cost">Cost: @record.Cost uah</div>
+                    <div class="summary-grid__value">@record.Amount @record.Unit</div>
+                    <div class="summary-grid__cost" title="@record.Tariff[0] uah/@record.Unit">Cost: @record.Cost uah</div>
                     <div class="summary-grid__days">@record.Days.TotalDays days</div>
                 </div>
             }
@@ -20,6 +20,7 @@
             <div class="summary-grid__block">
                 <h3 class="summary-grid__title">Total cost</h3>
                 <div class="summary-grid__cost">@Model.TotalCost uah</div>
+                <div class="summary-grid__cost-perday">@(Model.TotalCost/DateTime.Now.Day) uah/day</div>
             </div>
 
         </div>
