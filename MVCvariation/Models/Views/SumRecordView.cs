@@ -12,21 +12,25 @@ namespace HomeIO.Models.Views
         public double Cost { get; set; }
         public double[] Tariff { get; set; }
         public string TypeName { get; set; }
+        public int TypeId { get; set; }
         public string Unit { get; set; }
         public RecordView PrevRecord { get; set; }
         public RecordView Record { get; set; }
+        public TimeSpan Period { get; set; }
         public TimeSpan Days { get; set; }
 
 
         public SumRecordView(IList<RecordView> records)
         {
             this.Record = records[0];
+            this.Period = DateTime.Now - Record.Date;
             this.Days = DateTime.Now - Record.Date;
             this.Amount = Record.CurrentValue;
+            this.TypeId = Record.TypeId;
 
             if (records.Count > 1) {
                 this.PrevRecord = records[1];
-                this.Days = Record.Date - PrevRecord.Date;
+                this.Period = Record.Date - PrevRecord.Date;
                 this.Amount = Record.CurrentValue - PrevRecord.CurrentValue;
             }
             

@@ -295,6 +295,9 @@
     <Content Include="Content\less\mixin\layout.less" />
     <Content Include="Content\less\mixin\vars.less" />
     <Content Include="Content\less\blocks\summary-grid.less" />
+    <Content Include="Content\less\mixin\typo.less" />
+    <Content Include="Content\less\mixin\font.less" />
+    <Content Include="Content\less\blocks\body-content.less" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

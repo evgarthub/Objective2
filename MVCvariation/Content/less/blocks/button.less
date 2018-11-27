@@ -1,28 +1,41 @@
 ﻿///<reference path="../main.less" />
 
 .button {
-    background-color: @color-secondary;
-    border: none;
-    border-radius: 6px;
+    background-color: transparent;
+    border-color: @color-grey;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
     text-decoration: none;
-    padding: .2em .5em;
+    padding: .4em .8em;
     text-align: center;
-    color: white;
-    box-shadow: 0 2px 6px 0px @color-secondary--dark;
+    color: @color-dark-grey;
     transition: all ease-out .3s;
 
     &:hover {
         text-decoration: inherit;
-        color: white;
-        box-shadow: 0 4px 8px 0px @color-secondary--dark;
+        cursor: pointer;
     }
 
-    &--delete {
-        background-color: @color-primary;
-        box-shadow: 0 2px 6px 0px @color-primary--dark;
+    &--red {
+        background-color: @color-red--light;
+        color: @color-red;
+        border-width: 0;
 
         &:hover {
-            box-shadow: 0 4px 8px 0px @color-primary--dark;
+            background-color: @color-red;
+            color: @color-white;
+        }
+    }
+
+    &--blue {
+        background-color: @color-blue--light;
+        color: @color-blue;
+        border-width: 0;
+
+        &:hover {
+            background-color: @color-blue;
+            color: @color-white;
         }
     }
 }

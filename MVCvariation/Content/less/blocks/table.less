@@ -4,6 +4,7 @@
     display: flex;
     flex-flow: column nowrap;
     width: 100%;
+    background-color: @color-light-grey;
 
     &__container {
         .base-container();
@@ -12,12 +13,12 @@
     &__row {
         display: flex;
         flex-flow: row nowrap;
+        border-bottom: 1px solid @color-grey;
 
         &--header {
-            background-color: @color-secondary--dark;
-            color: white;
+            background-color: @color-blue--light;
+            color: @color-blue;
             padding: 1em;
-            box-shadow: 0 0 0 1px grey;
 
             .table__cell {
                 box-shadow: none;
@@ -27,10 +28,9 @@
 
     &__cell {
         flex: 1 1 0;
-        box-shadow: 0 0 0 1px grey;
         display: flex;
         justify-content: center;
-        align-content: center;
+        align-items: center;
 
         .button {
             flex: 0 0 auto;

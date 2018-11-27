@@ -4,24 +4,45 @@
 
 <section class="summary-grid">
     <div class="summary-grid__container">
-        <h1 class="summary-grid__header">Summary for @DateTime.Now.ToLongDateString()</h1>
+        <h1 class="summary-grid__header">Summary</h1>
+        <h4 class="summary-grid__date">@DateTime.Now.ToLongDateString()</h4>
 
         <div class="summary-grid__grid">
-            @foreach (var record in Model.SumRecords)
+            @foreach (var record in @Model.SumRecords)
             {
                 <div class="summary-grid__block">
-                    <h3 class="summary-grid__title">@record.TypeName</h3>
-                    <div class="summary-grid__value">@record.Amount @record.Unit</div>
-                    <div class="summary-grid__cost" title="@record.Tariff[0] uah/@record.Unit">Cost: @record.Cost uah</div>
-                    <div class="summary-grid__days">@record.Days.TotalDays days</div>
+                    <h3 class="summary-grid__title">
+                        @Html.ActionLink(@record.TypeName, "ListById", "Record", new { @id = record.TypeId}, new { @class = "summary-grid__title-link" })
+                    </h3>
+                    <div class="summary-grid__quater summary-grid__quater--current">
+                        <span class="summary-grid__value">@record.Amount</span>
+                        <span class="summary-grid__unit">@record.Unit</span>
+                    </div>
+                    <div class="summary-grid__quater summary-grid__quater--cost" title="@record.Tariff[0] uah/@record.Unit">
+                        <span class="summary-grid__value">@record.Cost</span>
+                        <span class="summary-grid__unit">uah</span>
+                    </div>
+
+                    <div class="summary-grid__quater summary-grid__quater--period">
+                        <span class="summary-grid__value">@record.Period.TotalDays</span>
+                        <span class="summary-grid__unit">days period</span>
+                    </div>
+
+                    <div class="summary-grid__quater summary-grid__quater--since">
+                        <span class="summary-grid__value">@Math.Round(record.Days.TotalDays, 0)</span>
+                        <span class="summary-grid__unit">since last</span>
+                    </div>
                 </div>
             }
 
-            <div class="summary-grid__block">
-                <h3 class="summary-grid__title">Total cost</h3>
-                <div class="summary-grid__cost">@Model.TotalCost uah</div>
-                <div class="summary-grid__cost-perday">@(Model.TotalCost/DateTime.Now.Day) uah/day</div>
-            </div>
+                <div class="summary-grid__block">
+                    <h3 class="summary-grid__title">Total cost</h3>
+
+                    <div class="summary-grid__quater summary-grid__quater--cost">
+                        <span class="summary-grid__value">@Model.TotalCost</span>
+                        <span class="summary-grid__unit">uah</span>
+                    </div>
+                </div>
 
         </div>
 

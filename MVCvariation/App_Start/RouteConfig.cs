@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace MVCvariation
@@ -12,6 +8,18 @@ namespace MVCvariation
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                name: "List",
+                url: "{controller}/List",
+                defaults: new { controller = "Record", action = "List" }
+            );
+
+            routes.MapRoute(
+                name: "ListWithFilter",
+                url: "{controller}/List/{id}",
+                defaults: new { controller = "Record", action = "ListById", id = "(\\d+)" }
+            );
 
             routes.MapRoute(
                 name: "Default",

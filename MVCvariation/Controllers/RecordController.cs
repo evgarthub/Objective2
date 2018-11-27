@@ -44,6 +44,12 @@ namespace HomeIO.Controllers
             return View(list);
         }
 
+        public ActionResult ListById(int id)
+        {
+            var list = RecordsRepo.GetById(id);
+            return View("List", list);
+        }
+
         public ActionResult Edit(int id)
         {
             return View(new EditPageViewModel(id));
