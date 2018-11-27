@@ -65,7 +65,7 @@ namespace HomeIO.Controllers
         public ActionResult Delete(int id)
         {
             RecordRepo.Delete(id);
-            return RedirectToAction("List");
+            return Redirect(Request.UrlReferrer.ToString());
         }
     }
 }

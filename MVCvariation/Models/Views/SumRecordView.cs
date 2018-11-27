@@ -16,21 +16,22 @@ namespace HomeIO.Models.Views
         public string Unit { get; set; }
         public RecordView PrevRecord { get; set; }
         public RecordView Record { get; set; }
-        public TimeSpan Period { get; set; }
-        public TimeSpan Days { get; set; }
+        public double Period { get; set; }
+        public double Days { get; set; }
 
 
         public SumRecordView(IList<RecordView> records)
         {
             this.Record = records[0];
-            this.Period = DateTime.Now - Record.Date;
-            this.Days = DateTime.Now - Record.Date;
+            
+            this.Period = Math.Round((DateTime.Now - Record.Date).TotalDays, 0);
+            this.Days = Math.Round((DateTime.Now - Record.Date).TotalDays, 0);
             this.Amount = Record.CurrentValue;
             this.TypeId = Record.TypeId;
 
             if (records.Count > 1) {
                 this.PrevRecord = records[1];
-                this.Period = Record.Date - PrevRecord.Date;
+                this.Period = Math.Round((Record.Date - PrevRecord.Date).TotalDays, 0);
                 this.Amount = Record.CurrentValue - PrevRecord.CurrentValue;
             }
             
