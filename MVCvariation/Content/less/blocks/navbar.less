@@ -7,8 +7,10 @@
 
     &__container {
         .base-container();
+        padding: @pad-small;
         display: flex;
         flex-flow: row wrap;
+        align-items: center;
     }
 
     &__list {
@@ -25,10 +27,11 @@
 
     &__logo {
         &-wrapper {
-            color: white;
+            color: @color-dark-grey;
+            .typo-header-medium;
 
             * {
-                color: white;
+                color: @color-dark-grey;
             }
         }
     }

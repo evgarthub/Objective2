@@ -1,6 +1,8 @@
 ﻿///<reference path="../main.less" />
 
 .summary-grid {
+    padding-top: @pad-medium;
+    padding-bottom: @pad-medium;
     background-color: @color-light-grey;
 
     &__container {
@@ -28,9 +30,8 @@
         display: flex;
         flex-flow: row wrap;
         padding: 1em;
+        align-items: flex-start;
         transition: all ease-out .3s;
-
-        
     }
 
     &__days {
@@ -52,7 +53,6 @@
         }
 
         &--period {
-
         }
     }
 
@@ -68,7 +68,7 @@
     &__title {
         .typo-header-small;
         color: @color-dark-grey;
-        text-transform: uppercase; 
+        text-transform: uppercase;
         border-bottom: 1px solid @color-grey;
         padding-bottom: @pad-medium;
         width: 100%;

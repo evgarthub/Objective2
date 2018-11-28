@@ -27,8 +27,7 @@ namespace HomeIO.Controllers
 
         public ActionResult New()
         {
-            
-            return View(TypeRepo.GetAll());
+            return View(new FormRecordViewModel());
         }
 
         [HttpPost]
@@ -52,7 +51,7 @@ namespace HomeIO.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View(new EditPageViewModel(id));
+            return View(new FormRecordViewModel(id));
         }
 
         [HttpPost]

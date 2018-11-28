@@ -8,11 +8,20 @@
         <h4 class="summary-grid__date">@DateTime.Now.ToLongDateString()</h4>
 
         <div class="summary-grid__grid">
+            <div class="summary-grid__block">
+                <h3 class="summary-grid__title">Total cost</h3>
+
+                <div class="summary-grid__quater summary-grid__quater--cost">
+                    <span class="summary-grid__value">@Model.TotalCost</span>
+                    <span class="summary-grid__unit">uah</span>
+                </div>
+            </div>
+
             @foreach (var record in @Model.SumRecords)
             {
                 <div class="summary-grid__block">
                     <h3 class="summary-grid__title">
-                        @Html.ActionLink(@record.TypeName, "ListById", "Record", new { @id = record.TypeId}, new { @class = "summary-grid__title-link" })
+                        @Html.ActionLink(@record.TypeName, "ListById", "Record", new { @id = record.TypeId }, new { @class = "summary-grid__title-link" })
                     </h3>
                     <div class="summary-grid__quater summary-grid__quater--current">
                         <span class="summary-grid__value">@record.Amount</span>
@@ -35,14 +44,7 @@
                 </div>
             }
 
-                <div class="summary-grid__block">
-                    <h3 class="summary-grid__title">Total cost</h3>
 
-                    <div class="summary-grid__quater summary-grid__quater--cost">
-                        <span class="summary-grid__value">@Model.TotalCost</span>
-                        <span class="summary-grid__unit">uah</span>
-                    </div>
-                </div>
 
         </div>
 
