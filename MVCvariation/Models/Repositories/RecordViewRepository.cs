@@ -22,9 +22,11 @@ namespace HomeIO.Models.Repositories
                     rows.Add(new RecordView
                     {
                         Id = reader.GetInt32(0),
+                        TypeId = reader.GetInt32(1),
                         TypeName = reader.GetString(4),
                         CurrentValue = reader.GetDouble(2),
-                        Date = reader.GetDateTime(3)
+                        Date = reader.GetDateTime(3),
+                        Unit = reader.GetString(6)
                     });
                 }
 
