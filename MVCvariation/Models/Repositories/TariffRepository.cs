@@ -13,12 +13,12 @@ namespace HomeIO.Models.Repositories
             SqlCommand command = new SqlCommand();
 
             command.Connection = DBInstance;
-            command.CommandText = "INSERT INTO[Tariffs]([TypeId],[Unit],[Cost],[StartDate],[SourceId]) VALUES(@tariffTypeId, @tariffUnit, @tariffCost, @tariffDate, @tariffSourceId)";
+            command.CommandText = "INSERT INTO[Tariffs]([TypeId],[Unit],[Cost],[StartDate],[Source]) VALUES(@tariffTypeId, @tariffUnit, @tariffCost, @tariffDate, @tariffSource)";
             command.Parameters.AddWithValue("tariffTypeId", entity.TypeId);
             command.Parameters.AddWithValue("tariffUnit", entity.Unit);
             command.Parameters.AddWithValue("tariffCost", entity.Cost);
             command.Parameters.AddWithValue("tariffDate", entity.Date);
-            command.Parameters.AddWithValue("tariffSourceId", entity.SourceId);
+            command.Parameters.AddWithValue("tariffSource", entity.Source);
             command.ExecuteNonQuery();
 
             Close();
@@ -56,7 +56,7 @@ namespace HomeIO.Models.Repositories
             SqlCommand command = new SqlCommand();
 
             command.Connection = DBInstance;
-            command.CommandText = "SELECT [TypeId],[Unit],[Cost],[StartDate],[SourceId] FROM [Tariffs]";
+            command.CommandText = "SELECT [TypeId],[Unit],[Cost],[StartDate],[Source] FROM [Tariffs]";
             SqlDataReader reader = command.ExecuteReader();
 
             IList<Tariff> rows = new List<Tariff>();
@@ -68,9 +68,9 @@ namespace HomeIO.Models.Repositories
                     Id = reader.GetInt16(0),
                     TypeId = reader.GetInt16(1),
                     Unit = reader.GetString(2),
-                    Cost = reader.GetDouble(3),
+                    Cost = reader.GetString(3),
                     Date = reader.GetDateTime(4),
-                    SourceId = reader.GetInt16(5)
+                    Source = reader.GetString(5)
                 });
             }
 
@@ -85,7 +85,7 @@ namespace HomeIO.Models.Repositories
             SqlCommand command = new SqlCommand();
 
             command.Connection = DBInstance;
-            command.CommandText = "SELECT [TypeId],[Unit],[Cost],[StartDate],[SourceId] FROM [Tariffs]";
+            command.CommandText = "SELECT [TypeId],[Unit],[Cost],[StartDate],[Source] FROM [Tariffs]";
             SqlDataReader reader = command.ExecuteReader();
 
             Tariff row = new Tariff
@@ -93,9 +93,9 @@ namespace HomeIO.Models.Repositories
                 Id = reader.GetInt16(0),
                 TypeId = reader.GetInt16(1),
                 Unit = reader.GetString(2),
-                Cost = reader.GetDouble(3),
+                Cost = reader.GetString(3),
                 Date = reader.GetDateTime(4),
-                SourceId = reader.GetInt16(5)
+                Source = reader.GetString(5)
             };
 
             Close();
@@ -109,13 +109,13 @@ namespace HomeIO.Models.Repositories
             SqlCommand command = new SqlCommand();
 
             command.Connection = DBInstance;
-            command.CommandText = "UPDATE [Tariffs] SET [TypeId] = @tariffTypeId,[Unit] = @tariffUnit,[Cost] = @tariffCost,[StartDate] = @tariffDate,[SourceId] = @tariffSourceId WHERE Id = @tariffId";
+            command.CommandText = "UPDATE [Tariffs] SET [TypeId] = @tariffTypeId, [Unit] = @tariffUnit, [Cost] = @tariffCost, [StartDate] = @tariffDate, [Source] = @tariffSource WHERE Id = @tariffId";
             command.Parameters.AddWithValue("tariffId", entity.Id);
             command.Parameters.AddWithValue("tariffTypeId", entity.TypeId);
             command.Parameters.AddWithValue("tariffUnit", entity.Unit);
             command.Parameters.AddWithValue("tariffCost", entity.Cost);
             command.Parameters.AddWithValue("tariffDate", entity.Date);
-            command.Parameters.AddWithValue("tariffSourceId", entity.SourceId);
+            command.Parameters.AddWithValue("tariffSource", entity.Source);
             command.ExecuteNonQuery();
 
             Close();

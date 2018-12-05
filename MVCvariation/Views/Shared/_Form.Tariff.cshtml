@@ -1,14 +1,14 @@
-﻿@model FormRecordViewModel
+﻿@model FormTariffViewModel
 
 
 <form class="form" method="post">
     <div class="form__field">
         <select class="form__input" required name="TypeId">
-            @if (Model.HasRecord)
+            @if (Model.HasTariff)
             {
                 foreach (var item in Model.Types)
                 {
-                    if (item.Id == Model.Record.TypeId)
+                    if (item.Id == Model.Tariff.TypeId)
                     {
                         <option class="form__option" value="@item.Id">@item.Name</option>
                         break;
@@ -18,7 +18,7 @@
 
                 foreach (var item in Model.Types)
                 {
-                    if (item.Id != Model.Record.TypeId)
+                    if (item.Id != Model.Tariff.TypeId)
                     {
                         <option class="form__option" value="@item.Id">@item.Name</option>
                     }
@@ -39,10 +39,16 @@
         @Html.ActionLink("New", "New", "Type", null, new { @class = "form__add-button button" })
     </div>
     <div class="form__field">
-        <input class="form__input" type="number" step="any" name="CurrentValue" placeholder="Value" value="@Model.Record.CurrentValue" />
+        <input class="form__input" type="text" name="Cost" placeholder="Cost" value="@(Model.HasTariff ? Model.Tariff.Cost : string.Empty)" />
     </div>
     <div class="form__field">
-        <input class="form__input" type="date" name="Date" placeholder="date" value="@Convert.ToDateTime(Model.Record.Date).ToString("yyyy-MM-dd")" />
+        <input class="form__input" type="text" name="Unit" placeholder="Unit" value="@(Model.HasTariff ? Model.Tariff.Unit : string.Empty)" />
+    </div>
+    <div class="form__field">
+        <input class="form__input" type="date" name="Date" placeholder="Date" value="@(Model.HasTariff ? Convert.ToDateTime(Model.Tariff.Date).ToString("yyyy-MM-dd") : string.Empty)" />
+    </div>
+    <div class="form__field">
+        <input class="form__input" type="text" name="Source" placeholder="Source" value="" />
     </div>
     <div class="form__field form__field--button">
         <input class="form__input button button--blue" type="submit" value="Submit" />

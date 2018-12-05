@@ -255,6 +255,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RecordController.cs" />
+    <Compile Include="Controllers\TariffController.cs" />
+    <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -262,17 +264,20 @@
     <Compile Include="Models\Entities\Record.cs" />
     <Compile Include="Models\Entities\Tariff.cs" />
     <Compile Include="Models\Entities\RType.cs" />
+    <Compile Include="Models\Repositories\TariffViewRepository.cs" />
     <Compile Include="Models\Repositories\RecordViewRepository.cs" />
     <Compile Include="Models\Repositories\SQLConnection.cs" />
     <Compile Include="Models\Repositories\TariffRepository.cs" />
     <Compile Include="Models\Repositories\RecordRepository.cs" />
     <Compile Include="Models\Repositories\TypeRepository.cs" />
     <Compile Include="Models\ViewModels\DefaultPageViewModel.cs" />
+    <Compile Include="Models\ViewModels\FormTariffViewModel.cs" />
     <Compile Include="Models\ViewModels\FormRecordViewModel.cs" />
     <Compile Include="Models\ViewModels\EditPageViewModel.cs" />
     <Compile Include="Models\ViewModels\SummaryPageViewModel.cs" />
     <Compile Include="Models\Views\RecordView.cs" />
     <Compile Include="Models\Views\SumRecordView.cs" />
+    <Compile Include="Models\Views\TariffView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -331,6 +336,12 @@
     <Content Include="Views\Record\Edit.cshtml" />
     <Content Include="Views\Shared\Thanks.cshtml" />
     <Content Include="Views\Shared\_Form.Record.cshtml" />
+    <Content Include="Views\Type\List.cshtml" />
+    <Content Include="Views\Type\New.cshtml" />
+    <Content Include="Views\Shared\_Form.Type.cshtml" />
+    <Content Include="Views\Tariff\List.cshtml" />
+    <Content Include="Views\Tariff\New.cshtml" />
+    <Content Include="Views\Shared\_Form.Tariff.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
